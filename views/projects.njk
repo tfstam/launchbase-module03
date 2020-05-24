@@ -1,0 +1,38 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+  <title>My Projects | Tamires Santos</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+  <div id="wrapper">
+    <h1>Projects</h1>
+  </div>
+
+  <section class="cards">
+    {% for project in projects %}
+      <div class="card">
+        <div class="card__image-container">
+          <img src="{{ project.image }}" alt="{{ project.name }}">
+            {% if project.tags %}
+              <div class="tags">
+                <ul>
+                  {% for tag in project.tags %}
+                    <li>{{ tag.name }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+        </div>
+        <div class="card__content">
+          <p>{{ project.name }}</p>
+        </div>
+        <div class="card__btn">
+          <a href="/project?id={{project.id}}">See More</a>
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+{% endblock %}

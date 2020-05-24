@@ -1,0 +1,36 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+  <title>{{ project.name }} | Tamires Santos</title>
+{% endblock %}
+
+
+{% block content %}
+  <div id="wrapper">
+    <h1>{{ project.name }}</h1>
+  </div>
+
+  <section class="project">
+      <div class="card">
+        <div class="card__image-container">
+          <img src="{{ project.image }}" alt="{{ project.name }}">
+            {% if project.tags %}
+              <div class="tags">
+                <ul>
+                  {% for tag in project.tags %}
+                    <li>{{ tag.name }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+        </div>
+        <div class="card__description">
+          <p>{{ project.description | striptags(true) | escape | nl2br }}</p>
+        </div>
+        <div class="card__btn">
+          <a href="{{project.repository}}" target="_blank">See project on GitHub</a>
+        </div>
+      </div>
+  </section>
+
+ {% endblock %}

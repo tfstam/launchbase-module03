@@ -1,0 +1,20 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+  <title>About | Tamires Santos</title>
+{% endblock %}
+
+{% block content %}
+  <div id="wrapper">
+    <img src="{{ profile.avatar_url }}" alt="{{ profile.name }}">
+    <h1>{{ profile.name }}</h1>
+    <h2>{{ profile.role }}</h2>
+    <p>{{ profile.description }}</p> 
+  </div>
+
+  <div id="links-footer" class="links">
+    {% for link in profile.links %}
+      <a href="{{ link.url }}" target="_blanket">{{ link.name }}</a>
+    {% endfor %}
+  </div>
+{% endblock %}
